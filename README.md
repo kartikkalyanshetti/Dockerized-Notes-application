@@ -187,7 +187,58 @@ DB_PASSWORD=replace_with_the_same_password</code></pre>
       <li>Run <code>docker compose down</code>.</li>
       <li>Start the stack again with <code>docker compose up -d</code>.</li>
       <li>Fetch the notes again. The earlier note should still exist.</li>
-    </ol>
+    </ol>    Repositories
+    notes-backend
+    General
+
+Using 0 of 1 private repositories. 
+kartik1160/notes-backend
+Last pushed 1 minute ago•
+
+Repository size: 60.6 MB
+•
+0
+•
+
+0
+
+Add a description
+
+Add a category
+Docker commands
+
+To push a new tag to this repository:
+
+docker push kartik1160/notes-backend:tagname
+
+Tags
+
+Docker Scout Inactive
+Activate
+
+This repository contains 1 tag(s).
+Tag	OS	Type	Pulled	Pushed
+
+1.0
+	
+	Image	less than 1 day	1 minute
+
+See all
+Repository overview
+INCOMPLETE
+
+An overview describes what your image does and how to run it. It displays in the public view of your repository once you have pushed some content.
+
+Build with
+Docker Build Cloud
+
+Accelerate image build times with access to cloud-based builders and shared cache.
+
+Docker Build Cloud executes builds on optimally-dimensioned cloud infrastructure with dedicated per-organization isolation.
+
+Get faster builds through shared caching across your team, native multi-platform support, and encrypted data transfer - all without managing infrastructure.
+
+Go to Docker Build Cloud
     <div class="note warning">
       <strong>Data-loss warning:</strong> <code>docker compose down -v</code> removes
       the Compose-managed named volume as well as the containers and networks. This
@@ -213,7 +264,7 @@ docker compose logs -f backend</code></pre>
   <section>
     <h2>9. Docker Hub image</h2>
     <p>The backend image is configured with this image name and tag:</p>
-    <pre><code>kartik1160/notes-backend:1.0</code></pre>
+    <pre><code>kartik1160/notes-backend</code></pre>
     <p>After the image has been published to Docker Hub, it can be downloaded with:</p>
     <pre><code>docker pull kartik1160/notes-backend:1.0</code></pre>
     <p>
