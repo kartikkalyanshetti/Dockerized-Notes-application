@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zidd Notes</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+            background: #f4f4f5;
+            color: #27272a;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #71717a;
+        }
+
+        form {
+            display: flex;
+            gap: 10px;
+            margin: 30px 0;
+        }
+
+        input {
+            flex: 1;
+            padding: 13px;
+            border: 1px solid #d4d4d8;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .note {
+            background: white;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px #00000012;
+        }
+
+        .note small {
+            color: #71717a;
+        }
+
+        #message {
+            color: #dc2626;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Zidd Notes</h1>
+        <p class="subtitle">Your notes, stored with PostgreSQL</p>
+
+        <form id="noteForm">
+            <input
+                type="text"
+                id="noteInput"
+                placeholder="Write a note..."
+                required
+            >
+            <button type="submit">Add Note</button>
+        </form>
+
+        <p id="message"></p>
+        <div id="notes"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById("noteForm");
+        const input = document.getElementById("noteInput");
+        const notesContainer = document.getElementById("notes");
+        const message = document.getElementById("message");
+
+        async function loadNotes() {
+            try {
+                const response = await fetch("/api/notes");
+
+                if (!response.ok) {
+                    throw new Error("Failed to load notes");
+                }
+
+                const notes = await response.json();
+
+                notesContainer.replaceChildren();
+
+                notes.forEach(note => {
+                    const article = document.createElement("article");
+                    article.className = "note";
+
+                    const content = document.createElement("p");
+                    content.textContent = note.content;
+
+                    const date = document.createElement("small");
+                    date.textContent = new Date(
+                        note.created_at
+                    ).toLocaleString();
+
+                    article.append(content, date);
+                    notesContainer.appendChild(article);
+                });
+            } catch (error) {
+                message.textContent = error.message;
+            }
+        }
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const content = input.value.trim();
+
+            if (!content) return;
+
+            try {
+                const response = await fetch("/api/notes", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ content })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to save note");
+                }
+
+                input.value = "";
+                message.textContent = "";
+                await loadNotes();
+            } catch (error) {
+                message.textContent = error.message;
+            }
+        });
+
+        loadNotes();
+    </script>
+</body>
+</html>
+
