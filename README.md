@@ -4,47 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Zidd - a three-tier Dockerized Notes application demonstrating practical Docker and DevOps concepts.">
-  <title>Zidd | Dockerized Notes Application</title>
-  <style>
-    :root {
-      color-scheme: light;
-      --ink: #202938;
-      --muted: #5d6878;
-      --accent: #2563eb;
-      --line: #e3e8ef;
-      --surface: #f6f8fb;
-      --code: #111827;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: #fff;
-      color: var(--ink);
-      font: 16px/1.7 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-    main { width: min(920px, calc(100% - 36px)); margin: 42px auto 72px; }
-    h1, h2, h3 { line-height: 1.25; }
-    h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 8px; }
-    h2 { margin-top: 42px; padding-bottom: 9px; border-bottom: 1px solid var(--line); }
-    h3 { margin-top: 26px; }
-    p, li { color: var(--muted); }
-    a { color: var(--accent); }
-    .intro { font-size: 1.12rem; max-width: 760px; }
-    .tagline { color: var(--muted); margin-top: 0; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 30px; }
-    .chip { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: .88rem; color: var(--ink); }
-    .note { border-left: 4px solid var(--accent); background: var(--surface); padding: 12px 16px; margin: 20px 0; }
-    .warning { border-left-color: #d97706; }
-    table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; }
-    th, td { text-align: left; padding: 11px 12px; border: 1px solid var(--line); vertical-align: top; }
-    th { background: var(--surface); color: var(--ink); }
-    pre { overflow-x: auto; padding: 16px; border-radius: 9px; background: var(--code); color: #e5e7eb; line-height: 1.55; }
-    code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .92em; }
-    p code, li code, td code { background: var(--surface); padding: 2px 5px; border-radius: 4px; color: var(--ink); }
-    .flow { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; overflow-x: auto; }
-    .flow pre { margin: 0; background: transparent; color: var(--ink); }
-    footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); }
-  </style>
+ 
 </head>
 <body>
 <main>
